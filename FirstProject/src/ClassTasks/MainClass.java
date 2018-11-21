@@ -22,12 +22,13 @@ public class MainClass {
 		// OPEN LOGIN SCREEN
 
 		driver.get("https://demo.opencart.com/index.php?route=account/login");
+		driver.manage().window().maximize();
 
 		// LOGIN TO THE WEB
 
 				WebElement username;
 				username = driver.findElement(By.id("input-email"));
-				username.sendKeys("fariha_aslam@live.com");
+				username.sendKeys("fari@live.com");
 
 				WebElement password;
 				password = driver.findElement(By.id("input-password"));
@@ -54,7 +55,7 @@ public class MainClass {
 
 				WebElement SearchBox;
 				SearchBox = driver.findElement(By.xpath("//*[@id=\"search\"]/input"));
-				SearchBox.sendKeys("hp lp 3065");
+				SearchBox.sendKeys("HP LP 3065");
 
 				WebElement SearchButton;
 				SearchButton = driver.findElement(By.xpath("//*[@id=\"search\"]/span/button"));
@@ -106,13 +107,13 @@ public class MainClass {
 				WebElement LastName = wait.until(ExpectedConditions.elementToBeClickable((By.id("input-payment-lastname"))));
 				LastName.sendKeys("Aslam");
 				WebElement Company = wait.until(ExpectedConditions.elementToBeClickable((By.id("input-payment-company"))));
-				Company.sendKeys("Digital Dividend");
+				Company.sendKeys("ABC Company");
 				WebElement Address1 = wait.until(ExpectedConditions.elementToBeClickable((By.id("input-payment-address-1"))));
-				Address1.sendKeys("R-18, Row 5, Block E");
+				Address1.sendKeys("Dummy Address 1");
 				WebElement Address2 = wait.until(ExpectedConditions.elementToBeClickable((By.id("input-payment-address-2"))));
-				Address2.sendKeys("C158/1, Block 9");
+				Address2.sendKeys("Dummy Address 2");
 				WebElement City = wait.until(ExpectedConditions.elementToBeClickable((By.id("input-payment-city"))));
-				City.sendKeys("Karachi");
+				City.sendKeys("Austria");
 				WebElement PostCode = wait.until(ExpectedConditions.elementToBeClickable((By.id("input-payment-postcode"))));
 				PostCode.sendKeys("75300");
 
@@ -120,9 +121,9 @@ public class MainClass {
 				//SELECT COUNTRY DROPDOWN OPTION
 
 				Select Country = new Select(driver.findElement(By.id("input-payment-country")));
-				Country.selectByVisibleText("Pakistan");
+				Country.selectByVisibleText("Australia");
 				try {
-					Thread.sleep(3000);
+					Thread.sleep(2000);
 				 } catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -132,7 +133,7 @@ public class MainClass {
 				//SELECT REGION/STATE DROPDOWN OPTION
 
 				Select StateSelected = new Select(driver.findElement(By.id("input-payment-zone")));
-				StateSelected.selectByVisibleText("Federally Administered Tribal Areas");
+				StateSelected.selectByVisibleText("Victoria");
 
 
 				//SUBMIT NEW ADDRESS DETAILS
@@ -152,7 +153,7 @@ public class MainClass {
 				// DELIVERY DETAILS
 
 				Select DeliveryExistingAddress = new Select(driver.findElement(By.xpath("//*[@id=\"shipping-existing\"]/select")));
-				DeliveryExistingAddress.selectByValue("4771");
+				DeliveryExistingAddress.selectByValue("4797");
 
 				WebElement ContinueButton2;
 				ContinueButton2 = driver.findElement(By.id("button-shipping-address"));
@@ -184,11 +185,16 @@ public class MainClass {
 
 				//CONFIRM ORDER
 
-				//WebElement ContinueButton5;
-				//ContinueButton5 = driver.findElement(By.id("button-confirm"));
-				//ContinueButton5.click();
+				WebElement ContinueButton5 = wait.until(ExpectedConditions.elementToBeClickable((By.id("button-confirm"))));
+				ContinueButton5.click();
 
-				System.out.println("Form Filled Successfully");
+				System.out.println("Order has been placed successfully"); 
+				
+				
+				//NAVIGATE TO STORE SCREEN
+				
+				WebElement ContinueButton6 = wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//*[@id=\"content\"]/div/div/a"))));
+				ContinueButton6.click();
 	}
 
 }
